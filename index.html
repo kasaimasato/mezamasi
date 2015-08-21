@@ -5,7 +5,11 @@
   <title>mezamasi</title>
 </head>
 <body>
-  <form>
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    ファイル:<br/>
+    <input type="file" name="upfile" size="30"/><br/>
+    <br/>
+    <input type="submit" value="アップロード"/>
     <input type="time" name="zikan" value="0.00">
     <input type="submit" value="set">
   </form>
