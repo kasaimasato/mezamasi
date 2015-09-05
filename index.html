@@ -4,16 +4,27 @@
   <meta charset="UTF-8">
   <title>目覚まし</title>
   <link rel="stylesheet" href="css/mezamasi.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="mezamasi.js"></script>
+  <audio src="s1.mp3" id="mySND"></audio>
 </head>
-<body>
+
+<body onLoad="setInterval('alarm()',1000);"  onLoad="window.setTimeout('timeCheck()',200);"  onLoad="tm();" >
+<FORM NAME="sampleForm">
+  現在時刻：
+  <INPUT type="text" size=4 NAME="dspTime"><br>
+  <INPUT name="setAlerm" type="button" value=" アラーム未設定 "
+  onClick="changeFlg();">
+  <INPUT type="text" name="alermH" size=1 value="00">:
+  <INPUT type="text" name="alermM" size=1 value="00">:
+  <INPUT type="text" name="alermS" size=1 value="00">
+</FORM>
+
   <form action="upload.php" method="post" enctype="multipart/form-data">
     ファイル:
     <input type="file" name="upfile" size="600"/><br/>
     <input type="submit" value="アップロード"/><br/>
-    <input type="time" name="zikan" value="0.00" size="600"/>
-    <input type="submit" value="set">
   </form>
-  <script type="text/javascript" src="mezamasi.js">
-  </script>
+
 </body>
 </html>
