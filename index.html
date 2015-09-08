@@ -9,12 +9,11 @@
   <audio src="s1.mp3" id="mySND"></audio>
 </head>
 
-<body onLoad="setInterval('alarm()',1000);"  onLoad="window.setTimeout('timeCheck()',200);"  onLoad="tm();" >
+<body onLoad="setInterval('alarm()',1000);" onLoad="window.setTimeout('timeCheck()',200);" onLoad="tm();" >
 <FORM NAME="sampleForm">
   現在時刻：
   <INPUT type="text" size=4 NAME="dspTime"><br>
-  <INPUT name="setAlerm" type="button" value=" アラーム未設定 "
-  onClick="changeFlg();">
+  <INPUT name="setAlerm" type="button" value=" アラーム未設定 " onClick="changeFlg();">
   <INPUT type="text" name="alermH" size=1 value="00">:
   <INPUT type="text" name="alermM" size=1 value="00">:
   <INPUT type="text" name="alermS" size=1 value="00">

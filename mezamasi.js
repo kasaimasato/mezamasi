@@ -59,8 +59,8 @@ function tm(){                    //タイマーをセット
 //音楽関係
 flag = true;
 function alarm(){
-	sec = (new Date()).getSeconds();
-	if ((sec < 3) && flag && document.all) { mySND.src = "s2.mp3"; flag = false; }
+	s = (new Date()).getSeconds();
+	if ((sec < 3) && flag && document.getElementById()) { mySND.src = "s2.mp3"; flag = false; }
 	if (sec > 3) flag = true;
 }
 
