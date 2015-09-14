@@ -1,5 +1,24 @@
-body{
-  font-size: 120%;
-  color: #f00;
-  text-align: center;
+#jsalarmclock{
+font-family: Tahoma;
+font-weight: bold;
+font-size: 40px;
+color: #f90;
+text-align: center;
+}
+
+#jsalarmclock div{
+margin-bottom: 0.1em;
+}
+
+#jsalarmclock span{
+margin-right: 0px;
+margin-left: 10px;
+}
+
+#jsalarmclock select {
+font-size: 80%;
+}
+
+input {
+font-size: 80%;
 }

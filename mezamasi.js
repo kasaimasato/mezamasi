@@ -1,73 +1,78 @@
-//アラームフラグを初期化する。
-var flg =0;
-
-//時刻更新＆アラームチェックファンクション
-function timeCheck(){
-	//時刻を取得。
-	Now = new Date();
-	Hour = Now.getHours();
-	Min = Now.getMinutes();
-	Sec = Now.getSeconds();
-
-	//時刻を表示。
-	document.sampleForm.dspTime.value=Hour + ":" + Min + ":" + Sec;
-
-	//時刻をチェック。
-	if((flg == 1) && (document.sampleForm.alermH.value == Hour) &&
-		(document.sampleForm.alermM.value == Min)&&
-		(document.sampleForm.alermS.value == Sec)){
-		if(window.confirm('起床時間になりました！！！')){
-			window.close();
-		}else{
-			changeFlg();
-		}
-	}
-	//次の更新をセットする。
-	window.setTimeout("timeCheck();",100);
-	window.setTimeout("timeCheck();",100);
-}
-//アラームフラグ変更ファンクション
-function changeFlg(){
-	if(flg == 0){
-	//アラーム未設定時、
-		document.sampleForm.setAlerm.value=" 設定済み ";
-		flg =1;
-	}else{
-	//アラーム設定済み時、
-		document.sampleForm.setAlerm.value=" アラーム未設定 ";
-		flg =0;
-	}
-}
-
 //背景関係
-i = 0;
-	url = "C:/Users/聖人_2/Documents/mezamasi/sample/";         //背景画像保存先
+bscd=new Array();
+bscd[0]="#ffa";
+bscd[1]="#fbf";
+bscd[2]="#fbb";
+bscd[3]="#afa";
+bscd[4]="#aff";
+bscd[5]="#bbf";
+bscd[6]="#ccc";
+ban_time=1; b=0; cnt=0;
 
-img = new Array("s_1.jpg","s_2.jpg","s_3.jpg","s_4.jpg","s_5.jpg");   //配列を作成
-function change(){                //背景画像を変える
-		i++;
-		if(i >= img.length) {
-				i = 0;
+function banban_bgcolor()
+        {
+         document.bgColor=bscd[cnt];
+         cnt++;
+         if(cnt>=bscd.length)cnt=0;
+         clearTimeout(b);
+         b=setTimeout('banban_bgcolor();',ban_time*20000);
+        }
+
+//アラーム関係
+var jsalarm={
+padfield:function(f){
+	return (f<10)? "0"+f : f
+},
+showcurrenttime:function(){
+	var dateobj=new Date()
+	var ct=this.padfield(dateobj.getHours())+":"+this.padfield(dateobj.getMinutes())+":"+this.padfield(dateobj.getSeconds())
+	this.ctref.innerHTML=ct
+	this.ctref.setAttribute("title", ct)
+	if (typeof this.hourwake!="undefined"){ //if alarm is set
+		if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
+			clearInterval(jsalarm.timer)
+			window.location=document.getElementById("musicloc").value
 		}
-		document.body.background = url + img[i];
+	}
+},
+init:function(){
+	var dateobj=new Date()
+	this.ctref=document.getElementById("jsalarm_ct")
+	this.submitref=document.getElementById("submitbutton")
+	this.submitref.onclick=function(){
+		jsalarm.setalarm()
+		this.value="アラームを設定"
+		this.disabled=true
+		return false
+	}
+	this.resetref=document.getElementById("resetbutton")
+	this.resetref.onclick=function(){
+	jsalarm.submitref.disabled=false
+	jsalarm.hourwake=undefined
+	jsalarm.hourselect.disabled=false
+	jsalarm.minuteselect.disabled=false
+	jsalarm.secondselect.disabled=false
+	return false
+	}
+	var selections=document.getElementsByTagName("select")
+	this.hourselect=selections[0]
+	this.minuteselect=selections[1]
+	this.secondselect=selections[2]
+	for (var i=0; i<60; i++){
+		if (i<24) //If still within range of hours field: 0-23
+		this.hourselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getHours()==i)
+		this.minuteselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getMinutes()==i)
+		this.secondselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getSeconds()==i)
+	}
+	jsalarm.showcurrenttime()
+	jsalarm.timer=setInterval(function(){jsalarm.showcurrenttime()}, 1000)
+},
+setalarm:function(){
+	this.hourwake=this.hourselect.options[this.hourselect.selectedIndex].value
+	this.minutewake=this.minuteselect.options[this.minuteselect.selectedIndex].value
+	this.secondwake=this.secondselect.options[this.secondselect.selectedIndex].value
+	this.hourselect.disabled=true
+	this.minuteselect.disabled=true
+	this.secondselect.disabled=true
 }
-function tm(){                    //タイマーをセット
-		document.body.background = url + img[i];
-		tm = setInterval("change()",10000);
 }
-
-//音楽関係
-flag = true;
-function alarm(){
-	s = (new Date()).getSeconds();
-	if ((sec < 3) && flag && document.getElementById()) { mySND.src = "s2.mp3"; flag = false; }
-	if (sec > 3) flag = true;
-}
-
-$(function(){
-	window.setTimeout('timeCheck();',200);
-});
-$(function time(){
-	var s = (new Date()).getSeconds();
-});
-$("#btm").click(changeFlg);

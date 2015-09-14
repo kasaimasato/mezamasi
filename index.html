@@ -6,24 +6,28 @@
   <link rel="stylesheet" href="css/mezamasi.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="mezamasi.js"></script>
-  <audio src="s1.mp3" id="mySND"></audio>
 </head>
 
-<body onLoad="setInterval('alarm()',1000);" onLoad="window.setTimeout('timeCheck()',200);" onLoad="tm();" >
-<FORM NAME="sampleForm">
-  現在時刻：
-  <INPUT type="text" size=4 NAME="dspTime"><br>
-  <INPUT name="setAlerm" type="button" value=" アラーム未設定 " onClick="changeFlg();">
-  <INPUT type="text" name="alermH" size=1 value="00">:
-  <INPUT type="text" name="alermM" size=1 value="00">:
-  <INPUT type="text" name="alermS" size=1 value="00">
-</FORM>
+<body onLoad="banban_bgcolor();" >
+  <form action="" method="">
+  <div id="jsalarmclock"><br>
+  <div><div class="leftcolumn">☆ 現在時刻 ☆</div><span id="jsalarm_ct" style="letter-spacing:15px"></span></div><hr size="3" color="#0000ff" width="450">
+  <div><div class="leftcolumn"></div>
+    <span><select style="height:40px"></select>  時</span>
+    <span><select style="height:40px"></select>  分</span>
+    <span><select style="height:40px"></select>  秒</span></div><hr size="3" color="#0000ff" width="450">
 
-  <form action="upload.php" method="post" enctype="multipart/form-data">
-    ファイル:
-    <input type="file" name="upfile" size="600"/><br/>
-    <input type="submit" value="アップロード"/><br/>
+  <div><div class="leftcolumn">♪ 曲を選択 ♪</div>
+  <input type="text" id="musicloc" size="4" value="s1.mp3" /> <span style="font: normal 11px Tahoma"></span></div>
+  <input type="submit" value="アラームを設定" id="submitbutton" />
+  <input type="reset" value="リセット" id="resetbutton" /><br>
+  </div>
   </form>
+
+  <script type="text/javascript">
+  jsalarm.init()
+  </script>
+
 
 </body>
 </html>
