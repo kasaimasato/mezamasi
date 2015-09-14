@@ -17,17 +17,27 @@
     <span><select style="height:40px"></select>  分</span>
     <span><select style="height:40px"></select>  秒</span></div><hr size="3" color="#0000ff" width="450">
 
+
   <div><div class="leftcolumn">♪ 曲を選択 ♪</div>
-  <input type="text" id="musicloc" size="4" value="s1.mp3" /> <span style="font: normal 11px Tahoma"></span></div>
+  <form id="audio_form" >
+　　<select name="audio_file" id="audio_file">
+　　　<option>♪曲を選択してください♪</option>
+　　　<option value="s1.mp3">s1</option>
+　　　<option value="s2.mp3">s2</option>
+　　</select>
+ </form>
+
+
+ <span style="font: normal 11px Tahoma"></span></div>
   <input type="submit" value="アラームを設定" id="submitbutton" />
   <input type="reset" value="リセット" id="resetbutton" /><br>
   </div>
   </form>
 
+
   <script type="text/javascript">
   jsalarm.init()
   </script>
-
 
 </body>
 </html>
