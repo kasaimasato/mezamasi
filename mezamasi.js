@@ -4,14 +4,13 @@ var ban_time=1;
 var b=0;
 var cnt=0;
 
-function banban_bgcolor()
-        {
+function banban_bgcolor(){
          document.bgColor=bscd[cnt];
          cnt++;
          if(cnt>=bscd.length)cnt=0;
          clearTimeout(b);
          b=setTimeout('banban_bgcolor();',ban_time*20000);
-        }
+}
 
 //アラーム関係
 var jsalarm={
@@ -25,8 +24,7 @@ showcurrenttime:function(){
 	this.ctref.setAttribute("title", ct);
 	if (typeof this.hourwake!="undefined"){ //if alarm is set
 		if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
-			clearInterval(jsalarm.timer);
-			window.location=document.getElementById("audio_file").value;
+			document.getElementById("audio_file").play();
 		}
 	}
 },
@@ -42,12 +40,14 @@ init:function(){
 	}
 	this.resetref=document.getElementById("resetbutton");
 	this.resetref.onclick=function(){
-	jsalarm.submitref.disabled=false;
-	jsalarm.hourwake=undefined;
-	jsalarm.hourselect.disabled=false;
-	jsalarm.minuteselect.disabled=false;
-	jsalarm.secondselect.disabled=false;
-	return false;
+    document.getElementById("audio_file").pause();
+  	document.getElementById("audio_file").currentTime = 0;
+  	jsalarm.submitref.disabled=false;
+  	jsalarm.hourwake=undefined;
+  	jsalarm.hourselect.disabled=false;
+  	jsalarm.minuteselect.disabled=false;
+  	jsalarm.secondselect.disabled=false;
+  	return false;
 	}
 	var selections=document.getElementsByTagName("select");
 	this.hourselect=selections[0];

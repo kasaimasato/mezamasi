@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/mezamasi.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="mezamasi.js"></script>
+  <audio src="s2.mp3" id="audio_file"></audio>
 </head>
 
 <body onLoad="banban_bgcolor();" >
@@ -19,18 +20,17 @@
 
 
   <div><div class="leftcolumn">♪ 曲を選択 ♪</div>
-  <form id="audio_form" >
-　　<select name="audio_file" id="audio_file">
+  <form id="audio_form">
+　　<select  id="audio_file">
 　　　<option>♪曲を選択してください♪</option>
-　　　<option value="s1.mp3">s1</option>
-　　　<option value="s2.mp3">s2</option>
+　　　<option value="s1.mp3">アラーム1</option>
+　　　<option value="s2.mp3">アラーム2</option>
 　　</select>
  </form>
 
-
- <span style="font: normal 11px Tahoma"></span></div>
-  <input type="submit" value="アラームを設定" id="submitbutton" />
-  <input type="reset" value="リセット" id="resetbutton" /><br>
+   <span style="font: normal 10px Tahoma"></span><div>
+   <input type="submit" value="アラームを設定" id="submitbutton">
+   <input type="reset" value="リセット" id="resetbutton"><br>
   </div>
   </form>
 

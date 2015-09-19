@@ -1,7 +1,7 @@
 #jsalarmclock{
 font-family: Tahoma;
 font-weight: bold;
-font-size: 40px;
+font-size: 45px;
 color: #f90;
 text-align: center;
 }
@@ -11,11 +11,9 @@ margin-bottom: 0.1em;
 }
 
 #jsalarmclock span{
-margin-right: 0px;
-margin-left: 10px;
 }
 
-#jsalarmclock select {
+#jsalarmclock select{
 font-size: 80%;
 }
 
