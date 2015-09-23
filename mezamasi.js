@@ -24,7 +24,11 @@ showcurrenttime:function(){
 	this.ctref.setAttribute("title", ct);
 	if (typeof this.hourwake!="undefined"){ //if alarm is set
 		if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
-			document.getElementById("audio_file").play();
+      var music_title =	document.getElementById("audio_select").value; //変数music_titleにselectで指定された曲のパスを入れる
+      var audio=document.getElementById("music");　//変数audioにaudioのIDを入れる
+      audio.src=music_title;　//music_titleに入っている曲のパスをaudioのsrc属性に指定する
+      audio.play();
+      navigator.vibrate([2000,1000,2000,1000]); // 2秒間のバイブレーション →1秒休止 →再び2秒間
 		}
 	}
 },
@@ -33,6 +37,7 @@ init:function(){
 	this.ctref=document.getElementById("jsalarm_ct");
 	this.submitref=document.getElementById("submitbutton");
 	this.submitref.onclick=function(){
+
 		jsalarm.setalarm();
 		this.value="アラームを設定";
 		this.disabled=true;
@@ -40,8 +45,10 @@ init:function(){
 	}
 	this.resetref=document.getElementById("resetbutton");
 	this.resetref.onclick=function(){
-    document.getElementById("audio_file").pause();
-  	document.getElementById("audio_file").currentTime = 0;
+    document.getElementById("music").pause();　 //曲の停止
+  	document.getElementById("music").currentTime = 0;　 //上に同じ
+    navigator.vibrate(0);  //バイブレーションの停止
+    navigator.vibrate([]); 　//上に同じ
   	jsalarm.submitref.disabled=false;
   	jsalarm.hourwake=undefined;
   	jsalarm.hourselect.disabled=false;
@@ -54,7 +61,7 @@ init:function(){
 	this.minuteselect=selections[1];
 	this.secondselect=selections[2];
 	for (var i=0; i<60; i++){
-		if (i<24) //If still within range of hours field: 0-23
+		if (i<24)
 		this.hourselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getHours()==i);
 		this.minuteselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getMinutes()==i);
 		this.secondselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getSeconds()==i);
