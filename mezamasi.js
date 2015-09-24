@@ -37,7 +37,6 @@ init:function(){
 	this.ctref=document.getElementById("jsalarm_ct");
 	this.submitref=document.getElementById("submitbutton");
 	this.submitref.onclick=function(){
-
 		jsalarm.setalarm();
 		this.value="アラームを設定";
 		this.disabled=true;
@@ -54,7 +53,7 @@ init:function(){
   	jsalarm.hourselect.disabled=false;
   	jsalarm.minuteselect.disabled=false;
   	jsalarm.secondselect.disabled=false;
-  	return false;
+   	return false;
 	}
 	var selections=document.getElementsByTagName("select");
 	this.hourselect=selections[0];
