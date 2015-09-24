@@ -9,7 +9,7 @@ function banban_bgcolor(){
          cnt++;
          if(cnt>=bscd.length)cnt=0;
          clearTimeout(b);
-         b=setTimeout('banban_bgcolor();',ban_time*20000);
+         b=setTimeout('banban_bgcolor();',ban_time*20000); 
 }
 
 //アラーム関係
